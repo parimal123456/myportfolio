@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <title>Logout</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-image: url("logoutimage.jpg");
+            background-repeat: no-repeat;
+            background-size: 100vw 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            width: 40%;
+            height:90%;
+            background: rgba(51, 51, 51, 0.335);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items:center;
+        }
+        h1{
+            font-size: 3vw;
+            align-self: center;
+                
+        }
+        hr{
+            width: 90%;
+            align-self: center;
+        }
+        p{
+            font-size: 1.3vw;
+            width: 70%;
+            display: flex;
+            align-items: center;
+        }
+        input.reset{
+            font-size: 1.2vw;
+            padding: .3vw;
+        }
+        .buttons{
+            width: 70%;
+            height: 5%;
+            display: flex;
+            justify-content:space-around;
+        }
+        .buttons input{
+            font-size: 1.2vw;
+            font-weight: 600;
+            width: 30%;
+        }
+        .buttons input:hover{
+            background-color: rgb(206, 195, 195);
+            border: 0;
+            cursor: pointer;
+        }
+        input.checkbox{
+           height: 1.3vw;
+           width: 1.3vw;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+         <form name="hey" id="we">
+          <h1>Sign In Form</h1>
+          <hr>
+          <p>  <input type="email" name="email" required class="reset" placeholder="Email" onclick="change(this)" id="name">&nbsp;&nbsp;<input type="checkbox" class="checkbox" id="c1" ></p>
+          <p> <input type="password" name="p1" id="password" required class="reset" placeholder="Password" onclick="change(this)">&nbsp;&nbsp;<input type="checkbox" class="checkbox" id="c2" > </p>
+          <p> <input type="password" name="p2" id="password2" required class="reset" placeholder="Confirm Password" onclick="change(this)">&nbsp;&nbsp;<input type="checkbox" class="checkbox" id="c3"></p>
+          <p style="background-color:red; color:#fff; font-size: 2vh; font-weight: 900; display: none;" id="invisible"  ></p>
+          <p><input type="checkbox" id="c4" checked> &nbsp;&nbsp;Remember Me</p>
+          <p style="display: block;" >By signing in you are agreed to our <a href="#">Terms & Conditions</a></p>
+          <div class="buttons">
+          <input type="submit" value="Sign In" id="bt1">
+            <input type="submit" value="Reset" id="bt2">
+          </div>  
+        </form>
+    </div>
+    <script>
+
+    
+        let id="";
+        
+    let c=[document.getElementById('c1'),document.getElementById('c2'),document.getElementById('c3'),document.getElementById('c4')];
+    for(let i=0;i<3;i++){
+    c[i].addEventListener('click',function(e){
+         e.preventDefault();
+     });
+    }
+
+
+  let n1= document.getElementById('name');
+    n1.addEventListener("click",fun);
+  let n2= document.getElementById('password');
+    n2.addEventListener("click",funa);
+  let n3= document.getElementById('password2');
+    n3.addEventListener("click",funb);
+  function fun(){
+        if(n1.click){
+          i=0;
+    }
+}
+  function funa(){
+        if(n2.click){
+          i=1;
+    }
+}
+  function funb(){
+        if(n3.click){
+          i=2;
+    }
+}
+    function change(e){
+     clearInterval(id);
+  id=setInterval(fun3,100);
+   function fun3(){
+       if((e.value)!=''){
+        c[i].setAttribute('checked','');
+       }
+       else{
+           c[i].removeAttribute('checked','');
+       }
+       if(n2.value!=n3.value){
+          n3.style.border='5px solid red'
+          }else{
+            n3.style.border='0' 
+            document.getElementById('invisible').style.display='none';
+          }
+   }
+    }
+
+    let reset=document.getElementById('bt2');
+    
+    reset.addEventListener('click',function(e){
+    e.preventDefault();
+    n1.value='';
+    n2.value='';
+    n3.value='';
+    for(let i=0;i<4;i++){
+        c[i].removeAttribute('checked','');
+    }
+    document.getElementById('invisible').style.display='none';
+    n3.style.border='0';
+    });
+    let submit=document.getElementById('bt1');
+    let x=0;
+   
+    submit.addEventListener('click',function(e){
+        clearInterval(id);
+          if(n2.value!=n3.value){
+          e.preventDefault();
+          n3.style.border='10px solid red';
+          document.getElementById('invisible').style.display='block';
+          document.getElementById('invisible').innerHTML='Password and Confirm Password should be same';
+          x=1;
+          }
+          else{
+            n3.style.border='0'
+            clearInterval(id);
+          }
+    });
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyScekwjx0UM263XV5di6EkZwuTERUXvZkE83VyCKcbg3EKA-TLmU9st-dYO7gjourO/exec'
+            const form = document.forms['hey']
+          
+            form.addEventListener('submit', e => {
+              // e.preventDefault()
+              // fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+              //   .then(response => d())
+              //   .catch(error => console.error('Error!', error.message))
+              if(x=1){
+                   open('2html.html','self'); 
+              }
+            })
+    </script>
+</body>
+</html>
