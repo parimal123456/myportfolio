@@ -16,9 +16,12 @@
             box-sizing: border-box;
         }
         body{
-            background-image: url("logoutimage.jpg");
+            /* background-image: url("logoutimage.jpg"); */
+            background-color: black;
+            /* max-width: 100%;
+            height: 100vh; */
             background-repeat: no-repeat;
-            background-size: 100vw 100vh;
+            /* background-size:100vw 100vh; */
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
             color: #fff;
@@ -30,13 +33,20 @@
             align-items: center;
         }
         .container{
-            width: 40%;
-            height:90%;
-            background: rgba(51, 51, 51, 0.335);
+            width: 40vw;
+            height:90vh;
+            background: rgba(85, 84, 84, 0.335);
             display: flex;
             justify-content: center;
             align-items: center;
         }
+        @media only screen and (max-width :800px) {
+          .container{
+            width: 80vw;
+            height:65vh;
+          }
+        }
+        
         form{
             width: 100%;
             height: 100%;
@@ -45,24 +55,43 @@
             justify-content: space-around;
             align-items:center;
         }
+      
         h1{
             font-size: 3vw;
             align-self: center;
                 
         }
+        @media only screen and (max-width :450px) {
+          h1{
+           font-size: 10vw;
+          }
+        }
         hr{
-            width: 90%;
+            width: 70%;
             align-self: center;
         }
         p{
             font-size: 1.3vw;
             width: 70%;
             display: flex;
-            align-items: center;
+            align-items:center;
+            /* justify-content: center; */
+        }
+        @media only screen and (max-width :450px) {
+          p{
+           justify-content: center;
+           font-size: 5vw;
+          }
         }
         input.reset{
             font-size: 1.2vw;
             padding: .3vw;
+        }
+        @media only screen and (max-width :450px) {
+          input.reset{
+           font-size: 5vw;
+           padding: .2vw;
+          }
         }
         .buttons{
             width: 70%;
@@ -70,10 +99,22 @@
             display: flex;
             justify-content:space-around;
         }
+        @media only screen and (max-width :450px) {
+          .buttons{
+         width: 80vw;
+         height: 5vh;
+          }
+        }
         .buttons input{
             font-size: 1.2vw;
             font-weight: 600;
             width: 30%;
+        }
+        @media only screen and (max-width :450px) {
+          .buttons input{
+           font-size: 4.8vw;
+           /* padding: 4vw; */
+          }
         }
         .buttons input:hover{
             background-color: rgb(206, 195, 195);
@@ -84,20 +125,25 @@
            height: 1.3vw;
            width: 1.3vw;
         }
-        
+        @media only screen and (max-width :450px) {
+          input.checkbox{
+           height:5vw;
+           width: 5vw;
+          }
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
          <form name="hey" id="we">
-          <h1>Sign In Form</h1>
+          <h1 style="color:red; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Sign In Form</h1>
           <hr>
           <p>  <input type="email" name="email" required class="reset" placeholder="Email" onclick="change(this)" id="name">&nbsp;&nbsp;<input type="checkbox" class="checkbox" id="c1" ></p>
           <p> <input type="password" name="p1" id="password" required class="reset" placeholder="Password" onclick="change(this)">&nbsp;&nbsp;<input type="checkbox" class="checkbox" id="c2" > </p>
           <p> <input type="password" name="p2" id="password2" required class="reset" placeholder="Confirm Password" onclick="change(this)">&nbsp;&nbsp;<input type="checkbox" class="checkbox" id="c3"></p>
           <p style="background-color:red; color:#fff; font-size: 2vh; font-weight: 900; display: none;" id="invisible"  ></p>
-          <p><input type="checkbox" id="c4" checked> &nbsp;&nbsp;Remember Me</p>
+          <p style="color:red;"><input style="justify-content: flex-start;" type="checkbox" id="c4" checked > &nbsp;&nbsp;Remember Me</p>
           <p style="display: block;" >By signing in you are agreed to our <a href="#">Terms & Conditions</a></p>
           <div class="buttons">
           <input type="submit" value="Sign In" id="bt1">
@@ -192,14 +238,15 @@
             const form = document.forms['hey']
           
             form.addEventListener('submit', e => {
-              // e.preventDefault()
+              /* // e.preventDefault()
               // fetch(scriptURL, { method: 'POST', body: new FormData(form)})
               //   .then(response => d())
-              //   .catch(error => console.error('Error!', error.message))
+              //   .catch(error => console.error('Error!', error.message)) */
               if(x=1){
                    open('2html.html','self'); 
               }
             })
+              
     </script>
 </body>
 </html>
